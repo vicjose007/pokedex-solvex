@@ -26,7 +26,6 @@ export default class Pokemon extends Component {
     weight: " ",
     genderRatioMale: " ",
     genderRatioFemale: " ",
-    evs: " ",
     hatchStep: " ",
   };
 
@@ -61,6 +60,8 @@ export default class Pokemon extends Component {
           break;
         case "specialDefense":
           specialDefense = stat["base_stat"];
+          break;
+        default:
           break;
       }
     });
@@ -176,7 +177,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.hp}%`,
                         }}
-                        aria-value="25"
+                        aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -195,7 +196,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.attack}%`,
                         }}
-                        aria-value="25"
+                        aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -214,7 +215,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.defense}%`,
                         }}
-                        aria-value="25"
+                        aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -233,7 +234,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.speed}%`,
                         }}
-                        aria-value="25"
+                        aria-valuenow="25"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -252,7 +253,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.specialAttack}%`,
                         }}
-                        aria-value={this.state.stats.specialAttack}
+                        aria-valuenow={this.state.stats.specialAttack}
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -271,7 +272,7 @@ export default class Pokemon extends Component {
                         style={{
                           width: `${this.state.stats.specialDefense}%`,
                         }}
-                        aria-value={this.state.stats.specialDefense}
+                        aria-valuenow={this.state.stats.specialDefense}
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -290,7 +291,7 @@ export default class Pokemon extends Component {
           </div>
           <hr />
           <div className="card-body">
-            <h5 class="card-title text-center">Profile</h5>
+            <h5 className="card-title text-center">Profile</h5>
             <div className="row">
               <div className="col-md-6">
                 <div className="row">
@@ -316,28 +317,28 @@ export default class Pokemon extends Component {
                     <h6 className="float-right">Gender Ratio:</h6>
                   </div>
                   <div className="col-6">
-                    <div class="progress">
+                    <div className="progress">
                       <div
-                        class="progress-bar"
+                        className="progress-bar"
                         role="progressbar"
                         style={{
                           width: `${this.state.genderRatioFemale}%`,
                           backgroundColor: "#c2185b",
                         }}
-                        aria-value="15"
+                        aria-valuenow="15"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
                         <small>{this.state.genderRatioFemale}</small>
                       </div>
                       <div
-                        class="progress-bar"
+                        className="progress-bar"
                         role="progressbar"
                         style={{
                           width: `${this.state.genderRatioMale}%`,
                           backgroundColor: "#1976d2",
                         }}
-                        aria-value="30"
+                        aria-valuenow="30"
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
@@ -367,7 +368,7 @@ export default class Pokemon extends Component {
               </div>
             </div>
           </div>
-          <div class="card-footer text-muted">
+          <div className="card-footer text-muted">
             Data From{" "}
             <a
               href="https://pokeapi.co/"
