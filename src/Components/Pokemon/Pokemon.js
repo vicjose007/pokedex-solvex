@@ -22,7 +22,6 @@ export default class Pokemon extends Component {
 
     height: " ",
     weight: " ",
-    abilities: " ",
     genderRatioMale: " ",
     genderRatioFemale: " ",
     evs: " ",
@@ -73,31 +72,7 @@ export default class Pokemon extends Component {
 
     const types = pokemonRes.data.types.map((type) => type.type.name);
 
-    const abilities = pokemonRes.data.abilities.map((ability) => {
-      return ability.ability.name
-        .split("-")
-        .map((s) => s.chartAt(0).toUpperCase() + s.substrings(1))
-        .join(" ");
-    });
-
-    const evs = pokemonRes.data.stats
-      .filter((stat) => {
-        if (stat.effort > 0) {
-          return true;
-        }
-        return false;
-      })
-      .map((stat) => {
-        return `${stat.effort} ${stat.stat.name
-          .toLowerCase()
-          .split("-")
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" ")}`;
-      })
-      .join(", ");
-
-    // Get Pokemon Description .... Is from a different end point uggh
-    this.get(pokemonSpeciesUrl).then((res) => {
+    await axios.get(pokemonSpeciesUrl).then((res) => {
       let description = "";
       res.data.flavor_text_entries.some((flavor) => {
         if (flavor.language.name === "en") {
@@ -137,8 +112,6 @@ export default class Pokemon extends Component {
       },
       height,
       weight,
-      abilities,
-      evs,
     });
   }
 
